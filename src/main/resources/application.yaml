@@ -1,0 +1,21 @@
+spring:
+  application:
+    name: api-gateway
+    
+  cloud:
+    gateway:
+      routes: 
+        - id: contact-service
+          uri: lb://CONTACT-SERVICE
+          predicates:
+            - Path=/contacts/*
+
+
+        - id: user-service
+          uri: lb://USER-SERVICE
+          predicates:
+            - Path=/user/*
+      
+
+server:
+  port: 8081
